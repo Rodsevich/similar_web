@@ -4,7 +4,7 @@
 [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason)
 [![License: MIT][license_badge]][license_link]
 
-An API consumer for "Similar Web" web statistics service. Use this if you want to know estimated data of web traffic of non-owned pages
+An API consumer for "Similar Web" web statistics service. Use this if you want to know estimated data for web traffic of non-owned pages
 
 ## Installation 💻
 
