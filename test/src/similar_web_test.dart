@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() {
   group('SimilarWeb', () {
     test('can be instantiated', () {
-      expect(SimilarWeb(), isNotNull);
+      expect(SimilarWeb('API-KEY'), isNotNull);
     });
   });
 }
