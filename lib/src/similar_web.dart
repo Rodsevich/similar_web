@@ -4,5 +4,8 @@
 /// {@endtemplate}
 class SimilarWeb {
   /// {@macro similar_web}
-  const SimilarWeb();
+  const SimilarWeb(this.apiKey);
+
+  /// The API key provided by Similar Web.
+  final String apiKey;
 }
