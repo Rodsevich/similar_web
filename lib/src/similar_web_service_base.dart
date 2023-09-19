@@ -49,12 +49,6 @@ abstract class ApiSimilarWebServiceBase {
     }
   }
 
-  ///* Verification
-  /// Use this API to retrieve Webhook Resource Data.
-
-// TODO(ANYONE): Verify name of method and the return type.
-  Future<void> getWebhookResourceData(String verificationId);
-
   /// Returns the estimated number of all visits to a given domain:
   /// desktop and mobile visits combined. Historical data goes back 36 months,
   /// depending on your subscription.

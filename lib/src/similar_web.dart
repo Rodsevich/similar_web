@@ -10,12 +10,6 @@ class SimilarWeb extends ApiSimilarWebServiceBase {
   SimilarWeb(super.apiKey, {super.headers}) : super();
 
   @override
-  Future<void> getWebhookResourceData(String verificationId) {
-    // TODO: implement getWebhookResourceData
-    throw UnimplementedError();
-  }
-
-  @override
   Future<TotalVisitsResponse> getTotalVisits(
     String domainName, {
     DateTime? startDate,
