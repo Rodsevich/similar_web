@@ -5,7 +5,7 @@ import 'package:dart_mappable/dart_mappable.dart';
 part 'meta.mapper.dart';
 
 @MappableClass()
-// TODO(Andreas): Add documentation for all the classes in this file.
+/// Response metadata model.
 class Meta with MetaMappable {
   Meta({
     this.request,
@@ -17,7 +17,9 @@ class Meta with MetaMappable {
   final DateTime? lastUpdated;
 }
 
-class Request {
+@MappableClass()
+/// Request data model.
+class Request with RequestMappable {
   Request({
     this.granularity,
     this.mainDomainOnly,
@@ -31,14 +33,35 @@ class Request {
     this.country,
   });
 
-  final String? granularity;
+  final Granularity? granularity;
   final bool? mainDomainOnly;
   final bool? mtd;
   final bool? showVerified;
   final dynamic state;
-  final String? format;
+  final Format? format;
   final String? domain;
   final DateTime? startDate;
   final DateTime? endDate;
   final String? country;
+}
+
+/// Type of formats in which the response can come.
+@MappableEnum()
+enum Format {
+  /// JSON format type.
+  json,
+
+  /// XML format type.
+  xml,
+}
+
+/// Granularity for the returned values.
+@MappableEnum()
+enum Granularity {
+  /// Daily granularity.
+  daily,
+  /// Weekly granularity.
+  weekly,
+  /// Monthly granularity.
+  monthly,
 }

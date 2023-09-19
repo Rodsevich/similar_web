@@ -12,7 +12,7 @@ extension VisitService on SimilarWeb {
     DateTime? startDate,
     DateTime? endDate,
     String? country,
-    String? granularity,
+    Granularity? granularity,
     bool? mainDomainOnly,
     Format? format,
     bool? showVerified,
@@ -29,21 +29,14 @@ extension VisitService on SimilarWeb {
         if (startDate != null) 'start_date': startDate,
         if (endDate != null) 'end_date': endDate,
         if (country != null) 'country': country,
-        if (granularity != null) 'granularity': granularity,
+        if (granularity != null) 'granularity': granularity.name,
         if (mainDomainOnly != null) 'main_domain_only': mainDomainOnly,
-        if (format != null) 'format': format,
+        if (format != null) 'format': format.name,
         if (showVerified != null) 'show_verified': showVerified,
         if (mtd != null) 'mtd': mtd,
         if (engagedOnly != null) 'engaged_only': engagedOnly,
       },
     );
-
     return TotalVisitsResponseMapper.fromJson(response.data as String);
   }
-}
-
-/// Type of formats in which the response can come.
-enum Format {
-  /// Json format type.
-  json,
 }
