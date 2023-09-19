@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:similar_web/src/models/models.dart';
 import 'package:similar_web/src/similar_web.dart';
 
@@ -46,4 +47,11 @@ extension VisitExtension on SimilarWeb {
 enum Format {
   /// Json format type.
   json,
+}
+
+//TODO(JuanJo): extraer esto en el repo y volarlo de aca
+main(){
+  SimilarWeb().response = Response(data: {'start_date':...});
+  SimilarWeb().getTotalVisits('google.com', startDate: DateTime.now(), endDate: DateTime.now());
+  SimilarWeb().response = null;
 }
