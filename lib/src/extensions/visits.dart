@@ -3,7 +3,7 @@ import 'package:similar_web/src/similar_web.dart';
 
 /// Contains all the endpoints referred to the
 /// traffic of visits inside a domain.
-extension VisitService on SimilarWeb {
+extension VisitExtension on SimilarWeb {
   /// Returns the estimated number of all visits to a given domain:
   /// desktop and mobile visits combined. Historical data goes back 36 months,
   /// depending on your subscription.
