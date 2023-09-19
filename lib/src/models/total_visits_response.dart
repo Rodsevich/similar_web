@@ -5,7 +5,7 @@ import 'package:similar_web/src/models/models.dart';
 
 part 'total_visits_response.mapper.dart';
 
-// TODO(Andreas): Add documentation for all the classes in this file.
+/// Response model used in endpoints for websites total visits.
 @MappableClass()
 class TotalVisitsResponse with TotalVisitsResponseMappable {
   TotalVisitsResponse({
@@ -17,7 +17,9 @@ class TotalVisitsResponse with TotalVisitsResponseMappable {
   final List<Visit>? visits;
 }
 
-class Visit {
+/// Visit data model.
+@MappableClass()
+class Visit with VisitMappable {
   Visit({
     this.date,
     this.visits,
