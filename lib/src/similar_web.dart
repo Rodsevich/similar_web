@@ -30,6 +30,8 @@ class SimilarWeb extends ApiSimilarWebServiceBase {
   }) async {
     final path = 'website/$domainName/total-traffic-and-engagement/visits';
 
+    // TODO(Andreas):
+    // Once API can be tested, remove `dynamic` and set real get type.
     final response = await get<dynamic>(
       path,
       queryParameters: {
