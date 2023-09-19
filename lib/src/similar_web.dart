@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+// ignore: depend_on_referenced_packages
+import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:similar_web/src/api_constants/api_constants.dart';
 
 /// {@template similar_web}
@@ -41,11 +43,17 @@ class SimilarWeb {
         'accept': 'application/json',
       };
 
+  @visibleForTesting
+  Response? response;
+
   /// Convenience method to make an HTTP GET request.
   Future<Response<T>> get<T>(
     String path, {
     Map<String, dynamic>? queryParameters,
   }) {
+    if(response != null) {
+      return Future.value(response as Response<T>);
+    }
     try {
       final response = _dio.get<T>(
         path,
