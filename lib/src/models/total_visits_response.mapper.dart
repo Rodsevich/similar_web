@@ -12,6 +12,7 @@ class TotalVisitsResponseMapper extends ClassMapperBase<TotalVisitsResponse> {
   static TotalVisitsResponseMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = TotalVisitsResponseMapper._());
+      MetaMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -96,6 +97,7 @@ extension TotalVisitsResponseValueCopy<$R, $Out>
 
 abstract class TotalVisitsResponseCopyWith<$R, $In extends TotalVisitsResponse,
     $Out> implements ClassCopyWith<$R, $In, $Out> {
+  MetaCopyWith<$R, Meta, Meta>? get meta;
   ListCopyWith<$R, Visit, ObjectCopyWith<$R, Visit, Visit>>? get visits;
   $R call({Meta? meta, List<Visit>? visits});
   TotalVisitsResponseCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
@@ -110,6 +112,9 @@ class _TotalVisitsResponseCopyWithImpl<$R, $Out>
   @override
   late final ClassMapperBase<TotalVisitsResponse> $mapper =
       TotalVisitsResponseMapper.ensureInitialized();
+  @override
+  MetaCopyWith<$R, Meta, Meta>? get meta =>
+      $value.meta?.copyWith.$chain((v) => call(meta: v));
   @override
   ListCopyWith<$R, Visit, ObjectCopyWith<$R, Visit, Visit>>? get visits =>
       $value.visits != null
