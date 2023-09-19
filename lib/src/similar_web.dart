@@ -7,22 +7,33 @@ import 'package:similar_web/src/api_constants/api_constants.dart';
 /// {@endtemplate}
 class SimilarWeb {
   /// {@macro similar_web}
-  SimilarWeb(
+  factory SimilarWeb(
     String apiKey, {
     Map<String, dynamic>? headers,
-  }) : _apiKey = apiKey {
-    _dio = Dio(
+  }) {
+    _instance._dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
-        headers: headers ?? basicHeaders,
+        headers: headers ?? _instance.basicHeaders,
       ),
     );
+
+    _instance._apiKey = apiKey;
+    
+    return _instance;
   }
 
-  late Dio _dio;
+  /// Private constructor.
+  SimilarWeb._internal();
+
+  /// Private class instance for Similar Web client.
+  static final SimilarWeb _instance = SimilarWeb._internal();
+
+  /// Late Dio instance, to be initialized inside the factory constructor.
+  late final Dio _dio;
 
   /// The API key provided by Similar Web.
-  final String _apiKey;
+  late final String _apiKey;
 
   /// The headers with the minimum and essential values to make a query.
   Map<String, dynamic> get basicHeaders => {
