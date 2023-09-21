@@ -13,12 +13,8 @@ class SimilarWeb {
     String apiKey, {
     Map<String, dynamic>? headers,
   }) {
-    _instance._dio = Dio(
-      BaseOptions(
-        baseUrl: ApiConstants.baseUrl,
-        headers: headers ?? _instance.basicHeaders,
-      ),
-    );
+    _instance._dio.options.baseUrl = ApiConstants.baseUrl;
+    _instance._dio.options.headers = headers ?? _instance.basicHeaders;  
 
     _instance._apiKey = apiKey;
     
@@ -32,10 +28,10 @@ class SimilarWeb {
   static final SimilarWeb _instance = SimilarWeb._internal();
 
   /// Late Dio instance, to be initialized inside the factory constructor.
-  late final Dio _dio;
+  final Dio _dio = Dio();
 
   /// The API key provided by Similar Web.
-  late final String _apiKey;
+  String _apiKey = '';
 
   /// The headers with the minimum and essential values to make a query.
   Map<String, dynamic> get basicHeaders => {
@@ -55,6 +51,9 @@ class SimilarWeb {
       return Future.value(response as Response<T>);
     }
     try {
+      if (_apiKey == 'MOCK') {
+        return Future.value(this.response! as Response<T>);
+      }
       final response = _dio.get<T>(
         path,
         queryParameters: {
