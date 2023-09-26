@@ -13,32 +13,27 @@ class SimilarWeb {
     String apiKey, {
     Map<String, dynamic>? headers,
   }) {
-    _instance._dio = Dio(
+    final dio = Dio(
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
-        headers: headers ?? _instance.basicHeaders,
+        headers: headers ?? basicHeaders,
       ),
     );
 
-    _instance._apiKey = apiKey;
-    
-    return _instance;
+    return SimilarWeb._internal(apiKey, dio);
   }
 
   /// Private constructor.
-  SimilarWeb._internal();
-
-  /// Private class instance for Similar Web client.
-  static final SimilarWeb _instance = SimilarWeb._internal();
+  SimilarWeb._internal(String apiKey, Dio dio) : _apiKey = apiKey, _dio = dio;
 
   /// Late Dio instance, to be initialized inside the factory constructor.
-  late final Dio _dio;
+  final Dio _dio;
 
   /// The API key provided by Similar Web.
-  late final String _apiKey;
+  final String _apiKey;
 
   /// The headers with the minimum and essential values to make a query.
-  Map<String, dynamic> get basicHeaders => {
+  static Map<String, dynamic> get basicHeaders => {
         'content-type': 'application/json',
         'accept': 'application/json',
       };
