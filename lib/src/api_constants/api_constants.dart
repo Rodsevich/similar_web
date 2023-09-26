@@ -3,7 +3,7 @@
 /// {endtemplate}
 class ApiConstants {
   /// The URL of Similar Web, which can be accesed for all queries.
-  static String baseUrl = 'https://www.similarweb.com/';
+  static String baseUrl = 'https://api.similarweb.com/v1/';
 
   /// The API key of similar web, used to get authorization for the queries.
   static String apiKeySimilarWeb = 'e970c02ed1784266adc00a40bf311648';
